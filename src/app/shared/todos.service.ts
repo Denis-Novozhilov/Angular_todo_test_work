@@ -14,6 +14,10 @@ export class TodosService {
 
   constructor() { }
 
+  editTodoFlag: boolean = false;
+  editTodoText: string = '';
+  editTodoId: number = 0;
+
   public todos: Todo[] = [
     {
       id: 1,
@@ -41,32 +45,23 @@ export class TodosService {
     this.todos = this.todos.filter(t => t.id !== id);
   }
 
-  changeTitle(id: number, newTitle: string) {
-    // const item = this.todos.filter(t => t.id === id)[0];
+  editTodoHandler(id: number, text: string) {
+    this.editTodoFlag = true;
+    this.editTodoText = text;
+    this.editTodoId = id;
+  }
 
-    /*
-    // начиная с индекса -1 (перед последним элементом)
-    // удалить 0 элементов,
-    // затем вставить числа 3 и 4
-    arr.splice(-1, 0, 3, 4);
-    */
-    // this.todos.find(t => t.id === id).title = title;
-    // console.log(`item↓`);
-    // console.log(item)
-
+  editTodo(id: number, value: string): void {
     const idx = this.todos.findIndex(t => t.id === id);
-    this.todos[idx].title = newTitle;
+    this.todos[idx].title = value;
 
-    // const item: any = this.todos.find(t => t.id === id);
-    // console.log(`item↓`);
-    // console.log(item)
-    // console.log(item.title);
-    // item.title = newTitle;
+    this.editTodoFlag= false;
+    this.editTodoText= '';
+    this.editTodoId= 0; 
   }
 
   addTodo(todo: Todo) {
     this.todos.push(todo);
-    // this.todos = this.todos.concat(todo);
   }
 
 }

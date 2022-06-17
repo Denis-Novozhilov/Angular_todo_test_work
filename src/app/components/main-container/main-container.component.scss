@@ -1,11 +1,25 @@
+.form__container {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+    height: 640px;
+}
 .main__container {
     background-color: rgb(138, 138, 138);
     border-radius: 10px;
     width: 800px;
+    height: 560px;
+    overflow-y: auto;
     margin: 20px auto 10px;
     padding: 20px;
     h1 {
+        margin: 70px 0 16px;
         font-weight: 400;
-        color: #fff;
+        color: rgb(194 24 91);
+        position: absolute;
+        z-index: 1;
+        top: -76px;
+        left: 625px;
+        font-size: 0.9em;
     }
 }

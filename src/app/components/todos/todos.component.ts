@@ -10,33 +10,25 @@ export class TodosComponent implements OnInit {
 
   constructor(public todosService: TodosService) { }
 
-  editableFlag:boolean = false;
+  editedValue: string = '';
 
   onChange(id: number): void {
     this.todosService.onToggle(id);
   }
   removeTodo(id: number): void {
     this.todosService.removeTodo(id);
-  } 
-  onEditEnd(event: any) {
-    console.log(`onEditEnd`)
-    console.log(event)
-    this.editableFlag = false;
   }
-  onEditTitleHandler(event: any){
-    console.log(event)
-    // this.editableFlag = !this.editableFlag;
-    console.log(event.path[1].children[0])
-    this.editableFlag = true;
-    const elem = event.path[1].children[0];
-    elem.focus();
-    elem.setSelectionRange();
+
+  onEditClickHandler(id: number): void {
+    const idx = this.todosService.todos.findIndex(t => t.id === id);
+    const text = this.todosService.todos[idx].title;
+    this.todosService.editTodoHandler(id, text);
   }
-  onTitleChange(event: any, id: number): void {
-    console.log(event.srcElement.innerText)
-    const title = event.srcElement.innerText;
-    this.todosService.changeTitle(id, title);
+
+  refresh(): void {
+    window.location.reload();
   }
+
   ngOnInit(): void {
 
   }

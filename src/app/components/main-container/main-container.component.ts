@@ -9,7 +9,7 @@ export class MainContainerComponent implements OnInit {
 
   constructor() { }
 
-  mainTitle = "Angular App - test work 2/2";
+  mainTitle = "angular app - test work 2/2";
 
   ngOnInit(): void {
   }

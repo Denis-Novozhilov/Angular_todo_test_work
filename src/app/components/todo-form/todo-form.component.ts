@@ -12,7 +12,14 @@ export class TodoFormComponent implements OnInit {
 
   value: string = '';
 
+  editValue: string = '';
+  editFlag: boolean = false;
+  editId: number = 0;
+
   ngOnInit(): void {
+    this.editValue = this.todosService.editTodoText;
+    this.editFlag = this.todosService.editTodoFlag;
+    this.editId = this.todosService.editTodoId;
   }
 
   addTodo() {
@@ -23,6 +30,11 @@ export class TodoFormComponent implements OnInit {
     };
     this.todosService.addTodo(todo);
     this.value = '';
+  }
+
+  addEditValue(id:number) {
+    this.todosService.editTodo(id, this.editValue);
+    this.editValue = '';
   }
 
 }

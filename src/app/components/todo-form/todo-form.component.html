@@ -1,10 +1,22 @@
-<mat-form-field appearance="fill">
+<div class="form__wrap">
+
+  <mat-form-field appearance="fill">
     <mat-label>write new task</mat-label>
-    <input matInput type="text" [(ngModel)]="value"
-    (keydown.enter)="addTodo()">
+    <input matInput type="text" [(ngModel)]="value" (keydown.enter)="addTodo()">
     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>
-</mat-form-field>
-    <button class="button-add" *ngIf="value" mat-raised-button color="basic"
-    (click)="addTodo()">add</button>
+  </mat-form-field>
+  <button class="button-add" [disabled]="!value" mat-raised-button color="basic" (click)="addTodo()">add</button>
+
+  <mat-form-field *ngIf="this.todosService.editTodoFlag" appearance="fill">
+    <mat-label>edit task`s text</mat-label>
+    <input matInput type="text" [(ngModel)]="editValue" (keydown.enter)="addEditValue(this.todosService.editTodoId)">
+    <button *ngIf="editValue" matSuffix mat-icon-button aria-label="Clear" (click)="editValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button class="button-add" *ngIf="this.todosService.editTodoFlag" [disabled]="!editValue" mat-raised-button
+    color="basic" (click)="addEditValue(this.todosService.editTodoId)">add</button>
+    
+</div>

@@ -1,10 +1,12 @@
 .todos__list-item {
-    min-height: 60px;
+    min-height: 140px;
     margin-bottom: 10px;
+    position: relative;
+    overflow-x: auto;
 }
 .todos__list-title {
     font-size: 1.6em;
-    margin-left: 30px;
+    margin-left: 20px;
     overflow-x: auto;
 }
 .done {
@@ -18,11 +20,3 @@
     color: #ffffff;
     font-size: 1.4em;
 }
-.icon-edit {
-    margin-left: 10px;
-    opacity: .6;
-}
-// .todos__list-checkbox {
-// }
-// .todo__button-close {
-// }
