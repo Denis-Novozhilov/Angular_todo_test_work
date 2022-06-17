@@ -1,0 +1,35 @@
+<ul *ngIf="todosService.todos.length; else noTodos">
+    <li class="todos__list-item" *ngFor="let todo of todosService.todos; let i = index">
+        <mat-card [class.done]="todo.complete">
+            <mat-card-subtitle>
+                <mat-checkbox 
+                    [checked]="todo.complete" 
+                    class="todos__list-checkbox"
+                    (change)="onChange(todo.id)">
+                    <b>{{i+1}}</b>
+                </mat-checkbox>
+            </mat-card-subtitle>
+
+            <mat-card-content>
+                <!-- <span [contenteditable]="editableFlag" (input)="onTitleChange($event, todo.id)" class="todos__list-title">{{todo.title}}</span> -->
+                <span tabindex="1" [attr.contenteditable]="editableFlag" (blur)="onEditEnd($event)" (input)="onTitleChange($event, todo.id)" class="todos__list-title">{{todo.title}}</span>
+                <mat-icon class="icon-edit" aria-hidden="false" aria-label="Example edit icon"
+                (click)="onEditTitleHandler($event)">edit</mat-icon>
+                <!-- <span class="material-symbols-outlined">edit</span> -->
+            </mat-card-content>
+            <!-- <hr>
+            <div contenteditable (input)="onNameChange($event)">
+                Type your name
+             </div>
+            <hr> -->
+            <mat-card-actions>
+                <button class="todo__button-close" mat-raised-button color="primary"
+                    (click)="removeTodo(todo.id)">&times;</button>
+            </mat-card-actions>
+        </mat-card>
+    </li>
+</ul>
+
+<ng-template #noTodos>
+    <p class="message__empty">todo list is empty</p>
+</ng-template>

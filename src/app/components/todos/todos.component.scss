@@ -1,0 +1,28 @@
+.todos__list-item {
+    min-height: 60px;
+    margin-bottom: 10px;
+}
+.todos__list-title {
+    font-size: 1.6em;
+    margin-left: 30px;
+    overflow-x: auto;
+}
+.done {
+    opacity: 0.95;
+    background-color: #706d6d;
+   .todos__list-title {
+    text-decoration: line-through;
+   }
+}
+.message__empty {
+    color: #ffffff;
+    font-size: 1.4em;
+}
+.icon-edit {
+    margin-left: 10px;
+    opacity: .6;
+}
+// .todos__list-checkbox {
+// }
+// .todo__button-close {
+// }
